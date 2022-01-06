@@ -3,7 +3,7 @@ import * as pixelcanvas from '../../index';
 
 const Basic = () => (
   <>
-    {pixelcanvas.default(1, 2)}
+    {/* {pixelcanvas.default(1, 2)} */}
   </>
 );
 
