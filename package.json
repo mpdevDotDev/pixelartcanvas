@@ -12,16 +12,24 @@
     "build": "rm -rf dist/ && parcel build src/index.ts",
     "serve": "parcel serve src/example/index.html",
     "eslint": "npx eslint ./src/**/*.{ts,tsx}",
-    "eslint:fix": "npx eslint --fix ./src/**/*.{ts,tsx}"
+    "eslint:fix": "npx eslint --fix ./src/**/*.{ts,tsx}",
+    "test:jest:watch": "jest --watch"
   },
   "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@babel/preset-typescript": "^7.16.7",
+    "@parcel/babel-preset-env": "^2.1.0",
     "@parcel/packager-ts": "^2.0.1",
     "@parcel/transformer-typescript-types": "^2.0.1",
+    "@types/jest": "^27.4.0",
     "@typescript-eslint/eslint-plugin": "^5.9.0",
     "@typescript-eslint/parser": "^5.9.0",
+    "babel-jest": "^27.4.6",
     "eslint": "^8.6.0",
     "eslint-config-google": "^0.14.0",
+    "eslint-plugin-jest": "^25.3.4",
     "eslint-plugin-react": "^7.28.0",
+    "jest": "^27.4.7",
     "parcel": "^2.0.1",
     "typescript": ">=3.0.0"
   },

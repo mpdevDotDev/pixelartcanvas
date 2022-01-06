@@ -1,5 +1,10 @@
 import React from 'react';
+import * as pixelcanvas from '../../index';
 
-const Basic = () => <div>basic</div>;
+const Basic = () => (
+  <>
+    {pixelcanvas.default(1, 2)}
+  </>
+);
 
 export default Basic;
