@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import ReactDOM from "react-dom";
-import cases from "./cases";
+import React, {useState} from 'react';
+import ReactDOM from 'react-dom';
+import cases from './cases';
 
 const casesDict = {
   basic: <cases.Basic />,
 };
 
-const Menu = ({ onClick }: { onClick: (string) => void }) => (
+const Menu = ({onClick}: { onClick: (string) => void }) => (
   Object.keys(casesDict).map((slug) => {
     return (
       <li key={`cases-${slug}`}>
@@ -14,11 +14,11 @@ const Menu = ({ onClick }: { onClick: (string) => void }) => (
           href={slug}
           onClick={(e) => {
             e.preventDefault();
-            onClick(slug)
+            onClick(slug);
           }}
         >
           {slug}
-        </a> 
+        </a>
       </li>
     );
   })
@@ -39,5 +39,5 @@ const App = () => {
   );
 };
 
-const app = document.getElementById("app");
+const app = document.getElementById('app');
 ReactDOM.render(<App />, app);

@@ -10,11 +10,18 @@
   "scripts": {
     "watch": "rm -rf dist/ && parcel watch src/index.ts",
     "build": "rm -rf dist/ && parcel build src/index.ts",
-    "serve": "parcel serve src/example/index.html"
+    "serve": "parcel serve src/example/index.html",
+    "eslint": "npx eslint ./src/**/*.{ts,tsx}",
+    "eslint:fix": "npx eslint --fix ./src/**/*.{ts,tsx}"
   },
   "devDependencies": {
     "@parcel/packager-ts": "^2.0.1",
     "@parcel/transformer-typescript-types": "^2.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.9.0",
+    "@typescript-eslint/parser": "^5.9.0",
+    "eslint": "^8.6.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-react": "^7.28.0",
     "parcel": "^2.0.1",
     "typescript": ">=3.0.0"
   },
