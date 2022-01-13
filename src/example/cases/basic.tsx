@@ -1,9 +1,9 @@
 import React from 'react';
-import * as pixelcanvas from '../../index';
+import PixelCanvas from '../../index';
 
 const Basic = () => (
   <>
-    {/* {pixelcanvas.default(1, 2)} */}
+    <PixelCanvas width="200px" height="200px" />
   </>
 );
 

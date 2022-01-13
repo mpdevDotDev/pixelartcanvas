@@ -7,21 +7,23 @@ const casesDict = {
 };
 
 const Menu = ({onClick}: { onClick: (string) => void }) => (
-  Object.keys(casesDict).map((slug) => {
-    return (
-      <li key={`cases-${slug}`}>
-        <a
-          href={slug}
-          onClick={(e) => {
-            e.preventDefault();
-            onClick(slug);
-          }}
-        >
-          {slug}
-        </a>
-      </li>
-    );
-  })
+  <>
+    {Object.keys(casesDict).map((slug) => {
+      return (
+        <li key={`cases-${slug}`}>
+          <a
+            href={slug}
+            onClick={(e) => {
+              e.preventDefault();
+              onClick(slug);
+            }}
+          >
+            {slug}
+          </a>
+        </li>
+      );
+    })}
+  </>
 );
 
 const App = () => {
