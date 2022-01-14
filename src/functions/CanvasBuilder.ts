@@ -1,6 +1,6 @@
 import {Subject} from 'rxjs';
 
-export type color = number;
+export type color = string;
 export interface CanvasBuilderProps {
   canvasElement: HTMLCanvasElement;
   pixelSize: number;
@@ -79,7 +79,7 @@ class CanvasBuilder {
   }
 
   #getColor(inputValue: color) {
-    return `#${inputValue.toString(16).padEnd(3, '0')}`;
+    return `#${inputValue.padEnd(3, '0')}`;
   }
 
   update() {
