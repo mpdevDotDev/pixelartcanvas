@@ -1,6 +1,6 @@
 {
   "name": "pixelartcanvas",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A react canvas component that renderizes pixel arts.",
   "source": "src/index.ts",
   "main": "dist/main.js",
