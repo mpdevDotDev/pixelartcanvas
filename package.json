@@ -1,6 +1,6 @@
 {
   "name": "pixelartcanvas",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A react canvas component that renderizes pixel arts.",
   "source": "src/index.ts",
   "main": "dist/main.js",
@@ -13,7 +13,7 @@
   },
   "scripts": {
     "watch": "rm -rf dist/ && parcel watch src/index.tsx",
-    "build": "parcel build src/index.tsx",
+    "build": "rm -rf dist/ && parcel build src/index.tsx",
     "serve": "parcel serve src/example/index.html",
     "eslint": "npx eslint ./src/**/*.{ts,tsx}",
     "eslint:fix": "npx eslint --fix ./src/**/*.{ts,tsx}",
@@ -21,7 +21,7 @@
     "test:ts": "tsc --noEmit",
     "test:jest:watch": "jest --watch --collect-coverage",
     "test": "yarn eslint && yarn test:jest",
-    "npmpublish": "yarn test && yarn build && rm -rf && yarn publish --access public"
+    "npmpublish": "yarn test && yarn build && yarn publish --access public"
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
