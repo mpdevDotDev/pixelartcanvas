@@ -19,7 +19,10 @@ describe('PixelCanvas', () => {
     ['000', '000', '000', '000', '000'],
   ];
 
-
+  let canvasBuilder;
+  const setCanvasBuilder = jest.fn((canvasBuilderInstance) => {
+    canvasBuilder = canvasBuilderInstance.constructor.name;
+  });
   const CanvasBuilderInputData = jest.spyOn(
       CanvasBuilder.prototype, 'inputData', 'set');
   let {container} = render(<PixelCanvas inputData={dataInput} />);
@@ -45,6 +48,7 @@ describe('PixelCanvas', () => {
           width={`${width}px`}
           height={`${height}px`}
           inputData={dataInput}
+          setCanvasBuilder={setCanvasBuilder}
         />,
     ));
     pixelCanvas = container.querySelector('.pixel-canvas');
@@ -72,5 +76,9 @@ describe('PixelCanvas', () => {
 
   it('should set CanvasBuilder.inputData', () => {
     expect(CanvasBuilderInputData).toHaveBeenCalled();
+  });
+
+  it('should call setCanvasBuilder with CanvasBuilder instance', () => {
+    expect(canvasBuilder).toEqual(CanvasBuilder.prototype.constructor.name);
   });
 });

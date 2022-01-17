@@ -11,6 +11,7 @@ interface WrapperProps {
 interface PixelartCanvasProps extends WrapperProps {
   pixelSize?: number;
   inputData: color[][];
+  setCanvasBuilder?: (CanvasBuilder: CanvasBuilder) => void;
 }
 
 const Wrapper = styled.div<WrapperProps>`
@@ -25,6 +26,7 @@ const PixelartCanvas = ({
   height,
   pixelSize,
   inputData,
+  setCanvasBuilder,
 }: PixelartCanvasProps) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   let canvasBuilder;
@@ -35,8 +37,14 @@ const PixelartCanvas = ({
       pixelSize,
     });
 
-    canvasBuilder.inputData = inputData;
+    if (setCanvasBuilder) {
+      setCanvasBuilder(canvasBuilder);
+    }
   }, [canvasRef]);
+
+  useEffect(() => {
+    canvasBuilder.inputData = inputData;
+  }, [inputData]);
 
   return <Wrapper
     className='pixel-canvas'

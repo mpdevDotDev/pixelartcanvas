@@ -3,7 +3,8 @@
     "target": "ES2017",
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "moduleResolution": "Classic",
+    "moduleResolution": "node",
+    "jsx": "react",
     "isolatedModules": true,
     "declaration": true
   },
