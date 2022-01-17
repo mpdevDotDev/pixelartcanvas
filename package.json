@@ -1,12 +1,16 @@
 {
-  "name": "pixelcanvas",
-  "version": "0.0.1",
+  "name": "pixelartcanvas",
+  "version": "1.0.0",
   "description": "A react canvas component that renderizes pixel arts.",
   "source": "src/index.ts",
   "main": "dist/main.js",
   "types": "dist/types.d.ts",
-  "author": "MpDevDotNet",
+  "author": "mpDevDotDev <mpdev@mpdev.dev> (https://github.com/mpdevDotDev)",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mpdevDotDev/pixelartcanvas"
+  },
   "scripts": {
     "watch": "rm -rf dist/ && parcel watch src/index.tsx",
     "build": "rm -rf dist/ && parcel build src/index.tsx",
