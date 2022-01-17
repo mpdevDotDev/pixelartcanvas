@@ -8,7 +8,7 @@ interface WrapperProps {
   height?: string;
 }
 
-interface PixelCanvasProps extends WrapperProps {
+interface PixelartCanvasProps extends WrapperProps {
   pixelSize?: number;
   inputData: color[][];
 }
@@ -20,12 +20,12 @@ const Wrapper = styled.div<WrapperProps>`
   height: ${(props) => props.height};
 `;
 
-const PixelCanvas = ({
+const PixelartCanvas = ({
   width,
   height,
   pixelSize,
   inputData,
-}: PixelCanvasProps) => {
+}: PixelartCanvasProps) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   let canvasBuilder;
 
@@ -47,10 +47,10 @@ const PixelCanvas = ({
   </Wrapper>;
 };
 
-PixelCanvas.defaultProps = {
+PixelartCanvas.defaultProps = {
   width: '40px',
   height: '40px',
   pixelSize: 40,
 };
 
-export default PixelCanvas;
+export default PixelartCanvas;

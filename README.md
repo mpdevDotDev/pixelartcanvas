@@ -1,4 +1,4 @@
-# PixelCanvas
+# PixelartCanvas
 
 ## About
 A simple react component that renders a canvas component containing a pixel art image from an given array of data.
@@ -10,7 +10,7 @@ A simple react component that renders a canvas component containing a pixel art 
 
 ### Using
 ```js
-import PixelCanvas from 'pixelcanvas';
+import PixelArtCanvas from 'pixelartcanvas';
 
 const dataInput = [
   ['000', '888', 'aaa', 'ccc', 'eee'],
@@ -22,14 +22,14 @@ const dataInput = [
 
 const MyComponent = () => (
   <>
-    <PixelCanvas width="200px" height="200px" inputData={dataInput} />
+    <PixelArtCanvas width="200px" height="200px" inputData={dataInput} />
   </>
 );
 
 export default MyComponent;
 ```
 
-The 'PixelCanvas' component has the following properties:
+The 'PixelArtCanvas' component has the following properties:
 * <b>width: string? (40px) - </b>canvas element width
 * <b>height: string? (40px) - </b>canvas element height
 * <b>pixelSize: number? (40) - </b>size of each rendered pixel

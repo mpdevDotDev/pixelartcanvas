@@ -1,5 +1,5 @@
 import React from 'react';
-import PixelCanvas from '../../index';
+import PixelartCanvas from '../../index';
 
 const dataInput = [
   ['000', '888', 'aaa', 'ccc', 'eee'],
@@ -11,7 +11,7 @@ const dataInput = [
 
 const Basic = () => (
   <>
-    <PixelCanvas width="200px" height="200px" inputData={dataInput} />
+    <PixelartCanvas width="200px" height="200px" inputData={dataInput} />
   </>
 );
 
