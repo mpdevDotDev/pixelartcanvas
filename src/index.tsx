@@ -51,7 +51,7 @@ const PixelartCanvas = ({
     width={width}
     height={height}
   >
-    <canvas ref={canvasRef} width={width} height={height}></canvas>
+    <canvas ref={canvasRef} width={width} height={height} />
   </Wrapper>;
 };
 

@@ -1,5 +1,6 @@
 import CanvasBuilder from './CanvasBuilder';
 import 'jest-canvas-mock';
+import userEvent from '@testing-library/user-event';
 
 describe('CanvasBuilder', () => {
   const canvasWidth = 200;
@@ -52,5 +53,48 @@ describe('CanvasBuilder', () => {
     const lastLine = dataInput[dataInput.length -1];
     const lastPixel = lastLine[lastLine.length -1];
     expect(ctx.fillStyle).toEqual(`#${lastPixel.padEnd(6, '0')}`);
+  });
+
+  it('should select first pixel when clicking over it', () => {
+    userEvent.pointer([
+      {keys: '[MouseLeft]', target: canvasElement, coords: {x: 0, y: 0}},
+    ]);
+    const ctxDrawCalls = ctx.__getDrawCalls();
+    expect(canvasBuilder.selectedPixel).toEqual([0, 0]);
+
+    expect(ctxDrawCalls).toMatchSnapshot();
+  });
+
+  it('should select last pixel when clicking over it', () => {
+    const x = (dataInput.length - 1) * pixelSize;
+    const y = (dataInput[0].length - 1) * pixelSize;
+    userEvent.pointer([
+      {
+        keys: '[MouseLeft]',
+        target: canvasElement,
+        coords: {x, y}},
+    ]);
+    const ctxDrawCalls = ctx.__getDrawCalls();
+    expect(canvasBuilder.selectedPixel).toEqual([
+      dataInput.length - 1,
+      dataInput[0].length - 1,
+    ]);
+
+    expect(ctxDrawCalls).toMatchSnapshot();
+  });
+
+  it('should deselect last selected pixel when clicking over it', () => {
+    const x = (dataInput.length - 1) * pixelSize;
+    const y = (dataInput[0].length - 1) * pixelSize;
+    userEvent.pointer([
+      {
+        keys: '[MouseLeft]',
+        target: canvasElement,
+        coords: {x, y}},
+    ]);
+    const ctxDrawCalls = ctx.__getDrawCalls();
+    expect(canvasBuilder.selectedPixel).toBeUndefined();
+
+    expect(ctxDrawCalls).toMatchSnapshot();
   });
 });

@@ -25,28 +25,28 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/10</span>
+                <span class='fraction'>13/13</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/10</span>
+                <span class='fraction'>13/13</span>
             </div>
         
             
@@ -119,7 +119,16 @@
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -147,15 +156,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -185,9 +201,10 @@ interface WrapperProps {
   height?: string;
 }
 &nbsp;
-interface PixelCanvasProps extends WrapperProps {
+interface PixelartCanvasProps extends WrapperProps {
   pixelSize?: number;
   inputData: color[][];
+  setCanvasBuilder?: (CanvasBuilder: CanvasBuilder) =&gt; void;
 }
 &nbsp;
 const Wrapper = styled.div&lt;WrapperProps&gt;`
@@ -197,12 +214,13 @@ const Wrapper = styled.div&lt;WrapperProps&gt;`
   height: ${(props) =&gt; props.height};
 `;
 &nbsp;
-const PixelCanvas = ({
+const PixelartCanvas = ({
   width,
   height,
   pixelSize,
   inputData,
-}: PixelCanvasProps) =&gt; {
+  setCanvasBuilder,
+}: PixelartCanvasProps) =&gt; {
   const canvasRef = useRef&lt;HTMLCanvasElement | null&gt;(null);
   let canvasBuilder;
 &nbsp;
@@ -212,25 +230,31 @@ const PixelCanvas = ({
       pixelSize,
     });
 &nbsp;
-    canvasBuilder.inputData = inputData;
+    if (setCanvasBuilder) {
+      setCanvasBuilder(canvasBuilder);
+    }
   }, [canvasRef]);
+&nbsp;
+  useEffect(() =&gt; {
+    canvasBuilder.inputData = inputData;
+  }, [inputData]);
 &nbsp;
   return &lt;Wrapper
     className='pixel-canvas'
     width={width}
     height={height}
   &gt;
-    &lt;canvas ref={canvasRef} width={width} height={height}&gt;&lt;/canvas&gt;
+    &lt;canvas ref={canvasRef} width={width} height={height} /&gt;
   &lt;/Wrapper&gt;;
 };
 &nbsp;
-PixelCanvas.defaultProps = {
+PixelartCanvas.defaultProps = {
   width: '40px',
   height: '40px',
   pixelSize: 40,
 };
 &nbsp;
-export default PixelCanvas;
+export default PixelartCanvas;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -238,7 +262,7 @@ export default PixelCanvas;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Fri Jan 14 2022 10:45:21 GMT-0300 (Brasilia Standard Time)
+                at Wed Jan 19 2022 16:59:25 GMT-0300 (Brasilia Standard Time)
             </div>
         <script src="../prettify.js"></script>
         <script>
